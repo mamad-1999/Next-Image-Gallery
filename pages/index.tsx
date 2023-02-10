@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Poppins } from '@next/font/google'
 import { Button, Container, Title } from '@mantine/core'
+import ImageList from '@/components/ImageList'
 
 const inter = Poppins({
   subsets: ['latin'],
@@ -17,7 +18,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container fluid py={20}>
-        <Title className={inter.className} align='center' >Next Image Gallery</Title>
+        <Title className={inter.className} mb={28} align='center' >Next Image Gallery</Title>
+        <ImageList />
       </Container>
     </>
   )
