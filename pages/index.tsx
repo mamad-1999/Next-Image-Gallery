@@ -5,7 +5,7 @@ import ImageList from '@/components/ImageList'
 
 const inter = Poppins({
   subsets: ['latin'],
-  weight: '600'
+  weight: ['600', "400"]
 })
 
 export default function Home() {
