@@ -1,5 +1,5 @@
 import { ActionIcon, Box, Flex, Text, Title, Image, Avatar } from "@mantine/core"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, memo } from "react"
 import Tag from "./Tag"
 
 type TagsListType = {
@@ -35,7 +35,6 @@ const Card = ({
 
         const observer = new IntersectionObserver(([entry]) => {
             if (isLast && entry.isIntersecting) {
-                console.log("The End");
                 nextPage()
                 observer.unobserve(entry.target)
             }
@@ -88,4 +87,4 @@ const Card = ({
     )
 }
 
-export default Card
+export default memo(Card)

@@ -2,6 +2,7 @@ import { ImageContext } from "@/context/ImageContextProvider"
 import { useContext } from "react"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import Card from "./Card"
+import { memo } from "react"
 
 const ImageList = () => {
     const { page, images, setPage } = useContext(ImageContext)
@@ -28,4 +29,4 @@ const ImageList = () => {
     )
 }
 
-export default ImageList
+export default memo(ImageList)
