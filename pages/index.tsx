@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container fluid py={20}>
-        <Title className={inter.className} mb={28} align='center' >Next Image Gallery</Title>
+        <Title className={inter.className} mb={28} order={2} align='center' >Next Image Gallery</Title>
         <ImageList />
       </Container>
     </>
