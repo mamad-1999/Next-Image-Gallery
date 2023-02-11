@@ -14,10 +14,13 @@ const ImageList = () => {
                 Authorization: `Client-ID ${process.env.NEXT_PUBLIC_ACCESS_KEY}`
             }
         })
-        const { results } = await response.json()
-        { (page > 1) ? setImages((prev) => [...prev, ...results]) : setImages([...results]) }
-
-        console.log(results);
+        if (response.ok) {
+            const { results } = await response.json()
+            { (page > 1) ? setImages((prev) => [...prev, ...results]) : setImages([...results]) }
+            console.log(results);
+            return
+        }
+        console.log("Request Failed!");
     }
 
     useEffect(() => {
@@ -25,7 +28,8 @@ const ImageList = () => {
     }, [page])
 
     return (
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 650: 2, 900: 3, 1200: 4 }}>
+        <ResponsiveMasonry
+            columnsCountBreakPoints={{ 350: 1, 650: 2, 900: 3, 1200: 4 }}>
             <Masonry columnsCount={3} gutter="12px">
                 {images.map((image, index) => (
                     <Card

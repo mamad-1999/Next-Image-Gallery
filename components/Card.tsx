@@ -1,5 +1,4 @@
-import { ActionIcon, Box, Flex, Text, Title } from "@mantine/core"
-import { Image, Avatar } from "@mantine/core"
+import { ActionIcon, Box, Flex, Text, Title, Image, Avatar } from "@mantine/core"
 import { useEffect, useRef } from "react"
 import Tag from "./Tag"
 
