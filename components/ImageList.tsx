@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import Masonry from "react-responsive-masonry"
 import Card from "./Card"
@@ -37,6 +36,7 @@ const ImageList = () => {
                     isLast={index === images.length - 1}
                     nextPage={() => setPage(page + 1)}
                     user={image.user.first_name}
+                    avatar={image.user.profile_image.small}
                 />
             ))}
         </Masonry>

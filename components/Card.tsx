@@ -1,5 +1,5 @@
-import { ActionIcon, Box, Flex, Stack, Title } from "@mantine/core"
-import { Image } from "@mantine/core"
+import { ActionIcon, Box, Flex, Text, Title } from "@mantine/core"
+import { Image, Avatar } from "@mantine/core"
 import { useEffect, useRef } from "react"
 import Tag from "./Tag"
 
@@ -15,6 +15,7 @@ type ImagePropsType = {
     like: number
     nextPage: () => void
     tags: TagsListType[]
+    avatar: string
 }
 
 const Card = ({
@@ -24,7 +25,8 @@ const Card = ({
     isLast,
     nextPage,
     like,
-    tags
+    tags,
+    avatar
 }: ImagePropsType) => {
 
     const cardRef = useRef<HTMLDivElement>(null!)
@@ -58,14 +60,17 @@ const Card = ({
                     },
                 }} />
             </Box>
-            <Flex my={8} align="center" justify="space-between" px={8}>
-                <Title order={5}>{user}</Title>
+            <Flex my={12} align="center" justify="space-between" px={8}>
+                <Flex gap={8} align="center" justify="center">
+                    <Avatar src={avatar} radius="xl" size="md" alt="profile" />
+                    <Text fw={500}>{user}</Text>
+                </Flex>
                 <Flex gap={8} align="center" justify="center">
                     <Title order={6}>{like}</Title>
-                    <ActionIcon variant="default" p={4}>
+                    <ActionIcon size="lg" variant="default" p={4}>
                         <svg
-                            width="30px"
-                            height="800px"
+                            width="40px"
+                            height="40px"
                             viewBox="0 0 64 64"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
