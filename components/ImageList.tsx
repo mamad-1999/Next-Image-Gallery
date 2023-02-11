@@ -1,31 +1,10 @@
-import { useEffect, useState } from "react"
+import { ImageContext } from "@/context/ImageContextProvider"
+import { useContext } from "react"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import Card from "./Card"
 
-const url = "https://api.unsplash.com/search/photos"
-
 const ImageList = () => {
-    const [page, setPage] = useState<number>(1)
-    const [images, setImages] = useState<any[]>([])
-
-    const fetchImagesList = async () => {
-        const response = await fetch(`${url}?query=tea&page=${page}`, {
-            headers: {
-                Authorization: `Client-ID ${process.env.NEXT_PUBLIC_ACCESS_KEY}`
-            }
-        })
-        if (response.ok) {
-            const { results } = await response.json()
-            { (page > 1) ? setImages((prev) => [...prev, ...results]) : setImages([...results]) }
-            console.log(results);
-            return
-        }
-        console.log("Request Failed!");
-    }
-
-    useEffect(() => {
-        fetchImagesList()
-    }, [page])
+    const { page, images, setPage } = useContext(ImageContext)
 
     return (
         <ResponsiveMasonry
