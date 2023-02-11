@@ -16,7 +16,8 @@ const ImageList = () => {
             }
         })
         const { results } = await response.json()
-        setImages((prev) => [...prev, ...results])
+        { (page > 1) ? setImages((prev) => [...prev, ...results]) : setImages([...results]) }
+
         console.log(results);
     }
 
