@@ -31,6 +31,7 @@ const ImageList = () => {
                     key={image.id}
                     imgSrc={image.urls.regular}
                     alt_desc={image.alt_description}
+                    like={image.likes}
                     isLast={index === images.length - 1}
                     nextPage={() => setPage(page + 1)}
                     user={image.user.first_name}

@@ -1,4 +1,4 @@
-import { Box, Title } from "@mantine/core"
+import { ActionIcon, Box, Flex, Stack, Title } from "@mantine/core"
 import { Image } from "@mantine/core"
 import { useEffect, useRef } from "react"
 
@@ -7,6 +7,7 @@ type ImagePropsType = {
     user: string
     alt_desc: string
     isLast: boolean
+    like: number
     nextPage: () => void
 }
 
@@ -15,7 +16,8 @@ const Card = ({
     user,
     alt_desc,
     isLast,
-    nextPage
+    nextPage,
+    like
 }: ImagePropsType) => {
 
     const cardRef = useRef<HTMLDivElement>(null!)
@@ -40,9 +42,26 @@ const Card = ({
             padding: 8,
             borderRadius: 8,
         }}>
-            <Image src={imgSrc} alt={alt_desc ? alt_desc : "Image"} />
-            <Title my={4} order={5}>{user}</Title>
-        </Box>
+            <Box sx={{ overflow: "hidden", borderRadius: 8, }}>
+                <Image src={imgSrc} alt={alt_desc ? alt_desc : "Image"} sx={{
+                    '&:hover': {
+                        opacity: "0.8",
+                        scale: "1.1",
+                        transition: "ease .3s all"
+                    },
+                }} />
+            </Box>
+            <Flex my={8} align="center" justify="space-between" px={8}>
+                <Title order={5}>{user}</Title>
+                <Flex gap={8} align="center" justify="center">
+                    <Title order={6}>{like}</Title>
+                    <ActionIcon variant="default" p={4}>
+                        <svg width="30px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fff"><path d="M44 12c-8 0-9.91 8-12 8s-4-8-12-8c-6.63 0-12 4-12 12 0 12 20 28 24 28s24-16 24-28c0-8-5.37-12-12-12z" />
+                        </svg>
+                    </ActionIcon>
+                </Flex>
+            </Flex>
+        </Box >
     )
 }
 
