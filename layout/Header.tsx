@@ -1,0 +1,25 @@
+import { Flex, Title, Input, Button } from "@mantine/core"
+
+const Header = () => {
+    return (
+        <Flex align="center" justify="space-between" p={16} >
+            <Title order={2}>Next Image Gallery</Title>
+            <Flex align="center" justify="center">
+                <Input
+                    sx={{ width: "500px" }}
+                    placeholder="Search Picture"
+                    radius="md"
+                    size="md"
+                    variant="filled"
+                />
+                <Button
+                    variant="gradient"
+                    size="md"
+                    gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+                >Search</Button>
+            </Flex>
+        </Flex>
+    )
+}
+
+export default Header
