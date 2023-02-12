@@ -1,5 +1,5 @@
 import { useInputState } from "@mantine/hooks"
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useCallback } from "react"
 
 const url = "https://api.unsplash.com/search/photos"
 
@@ -24,19 +24,20 @@ const ImageContextProvider = ({ children }: ContextPropsType) => {
     const [images, setImages] = useState<any[]>([])
     const [query, setQuery] = useInputState<string>("")
 
-    const fetchImagesList = async () => {
-        const response = await fetch(`${url}?query=${query ? query : "coffee"}&page=${page}`, {
-            headers: {
-                Authorization: `Client-ID ${process.env.NEXT_PUBLIC_ACCESS_KEY}`
-            }
-        })
-        if (response.ok) {
+    const fetchImagesList = useCallback(async () => {
+        try {
+            const response = await fetch(`${url}?query=${query ? query : "coffee"}&page=${page}`, {
+                headers: {
+                    Authorization: `Client-ID ${process.env.NEXT_PUBLIC_ACCESS_KEY}`
+                }
+            })
             const { results } = await response.json()
             { (page > 1) ? setImages((prev) => [...prev, ...results]) : setImages([...results]) }
-            return
+            setQuery("")
+        } catch (error: any) {
+            console.log(error.message);
         }
-        console.log("Request Failed!");
-    }
+    }, [page, query])
 
     useEffect(() => {
         fetchImagesList()
