@@ -50,7 +50,7 @@ const Card = ({
             padding: 8,
             borderRadius: 8,
         }}>
-            <Box sx={{ overflow: "hidden", borderRadius: 8, }}>
+            <Box sx={{ overflow: "hidden", borderRadius: 8, position: "relative" }}>
                 <Image src={imgSrc} alt={alt_desc ? alt_desc : "Image"} fill />
             </Box>
             <Flex my={12} align="center" justify="space-between" px={8}>
