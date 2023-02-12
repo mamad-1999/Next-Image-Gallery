@@ -1,6 +1,7 @@
-import { ActionIcon, Box, Flex, Text, Title, Image, Avatar } from "@mantine/core"
+import { ActionIcon, Box, Flex, Text, Title, Avatar } from "@mantine/core"
 import { useEffect, useRef, memo } from "react"
 import Tag from "./Tag"
+import Image from "next/image"
 
 type TagsListType = {
     title: string
@@ -50,13 +51,7 @@ const Card = ({
             borderRadius: 8,
         }}>
             <Box sx={{ overflow: "hidden", borderRadius: 8, }}>
-                <Image src={imgSrc} alt={alt_desc ? alt_desc : "Image"} sx={{
-                    '&:hover': {
-                        opacity: "0.8",
-                        scale: "1.1",
-                        transition: "ease .3s all"
-                    },
-                }} />
+                <Image src={imgSrc} alt={alt_desc ? alt_desc : "Image"} fill />
             </Box>
             <Flex my={12} align="center" justify="space-between" px={8}>
                 <Flex gap={8} align="center" justify="center">
