@@ -20,7 +20,7 @@ const Header = () => {
                     marginBottom: 12,
                 },
             }}>Next Image Gallery</Title>
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" gap={4}>
                 <Input
                     sx={{
                         width: "500px",
