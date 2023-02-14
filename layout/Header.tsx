@@ -1,9 +1,18 @@
-import { ImageContext } from "@/context/ImageContextProvider"
 import { Flex, Title, Input, Button } from "@mantine/core"
-import { useContext, memo } from "react"
+import { memo } from "react"
 
-const Header = () => {
-    const { query, setQuery, fetchImagesList, setImages } = useContext(ImageContext)
+type HeaderProps = {
+    query: string
+    onSearch: (e: any) => void
+    onFetch: () => void
+}
+
+const Header = ({ onFetch, query, onSearch }: HeaderProps) => {
+
+    const searchStart = () => { if (query) onFetch() }
+
+    console.log("Re render Header")
+
     return (
         <Flex
             align="center"
@@ -33,17 +42,12 @@ const Header = () => {
                     size="md"
                     variant="filled"
                     value={query}
-                    onChange={setQuery}
+                    onChange={(e) => onSearch(e)}
                 />
                 <Button
                     variant="gradient"
                     size="md"
-                    onClick={() => {
-                        if (query) {
-                            setImages([])
-                            fetchImagesList()
-                        }
-                    }}
+                    onClick={searchStart}
                     gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
                 >Search</Button>
             </Flex>

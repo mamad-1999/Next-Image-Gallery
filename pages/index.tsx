@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import { Poppins } from '@next/font/google'
-import { Container, Title } from '@mantine/core'
-import ImageList from '@/components/ImageList'
-import Header from '@/layout/Header'
-import ImageContextProvider from '@/context/ImageContextProvider'
+import { Container } from '@mantine/core'
+import HomeLayout from '@/layout/Home'
 
 export const inter = Poppins({
   subsets: ['latin'],
@@ -19,12 +17,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ImageContextProvider>
-        <Container fluid py={20}>
-          <Header />
-          <ImageList />
-        </Container>
-      </ImageContextProvider>
+      <Container fluid py={20}>
+        <HomeLayout />
+      </Container>
     </>
   )
 }

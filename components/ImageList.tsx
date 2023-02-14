@@ -1,11 +1,15 @@
-import { ImageContext } from "@/context/ImageContextProvider"
-import { useContext } from "react"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import Card from "./Card"
 import { memo } from "react"
 
-const ImageList = () => {
-    const { page, images, setPage } = useContext(ImageContext)
+type ImageListProps = {
+    images: any[],
+    page: number,
+    setPage: React.Dispatch<React.SetStateAction<number>>
+}
+
+const ImageList = ({ images, page, setPage }: ImageListProps) => {
+    console.log("Re render ImageList")
 
     return (
         <ResponsiveMasonry
