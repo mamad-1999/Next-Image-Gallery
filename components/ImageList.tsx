@@ -9,8 +9,6 @@ type ImageListProps = {
 }
 
 const ImageList = ({ images, page, setPage }: ImageListProps) => {
-    console.log("Re render ImageList")
-
     return (
         <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 650: 2, 900: 3, 1200: 4 }}>
